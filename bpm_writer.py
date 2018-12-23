@@ -48,7 +48,7 @@ def check_library(library_filename):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        options = "--ellington-library=FILE"
+        options = "ellington-library-file"
         print("Usage:\t{} {}".format(sys.argv[0], options))
         exit(0)
 
