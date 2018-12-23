@@ -14,7 +14,7 @@
 1. Open Mixxx and the tag should appear! If not, select songs and click right > Metadata > Import from file tags
 
 # BPM
-Although Mixxx can calculate BPM, it very often fails on swing music. Use Adam Harries's [Ellington](https://github.com/AdamHarries/ellington) instead:
+1. Although Mixxx can calculate BPM, it very often fails on swing music. Use Adam Harries's [Ellington](https://github.com/AdamHarries/ellington) instead:
 ```bash
 # Scrape the music files
 ellington init library.json -d ~/Directory-to-scan/
@@ -25,6 +25,7 @@ ellington bpm library.json
 # Write BPM as TBPM ID3v2 tag (instead of using Ellington like: ellington write library.json)
 ./bpm_writer.py library.json
 ```
+1. In Mixxx, the BPM info doesn't load nicely. Workaround: select the songs, right click > Clear > BPM and Beatgrid. Then right click > Metadata > Import From File Tags.
 
 # Using Mixxx
 ## Organising music
