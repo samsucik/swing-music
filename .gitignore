@@ -1,2 +1,7 @@
 *.mp3
 node_modules
+tmp
+library.json
+occurances.list
+disliked-songs.txt
+liked-songs.txt
