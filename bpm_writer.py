@@ -19,7 +19,20 @@ def write_tags(lib_address):
                 filename = track["location"]
                 bpm = track["eldata"]["algs"]["ffmpeg-naive"]
 
-                print("Track: {}\n\tBPM: {}".format(filename, bpm))
+                print("Track: {}\t\tBPM: {}".format(filename, bpm))
+
+                bashCommand1 = split('mid3v2 -l ./\"{}\"'.format(filename))                
+                process1 = subprocess.Popen(bashCommand1, stdout=subprocess.PIPE)
+
+                bashCommand2 = split('grep "TBPM="')                
+                process2 = subprocess.Popen(bashCommand2, stdin=process1.stdout, stdout=subprocess.PIPE)
+                
+                bashCommand3 = split('sed "s/TBPM=//g"')                
+                process3 = subprocess.Popen(bashCommand3, stdin=process2.stdout, stdout=subprocess.PIPE)
+                
+                output, error = process3.communicate()
+                if len(output) > 0:
+                    continue
 
                 bashCommand = split('mid3v2 --TBPM {} ./\"{}\"'.format(bpm, filename))                
                 process = subprocess.Popen(bashCommand, stdout=subprocess.PIPE)

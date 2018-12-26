@@ -8,13 +8,14 @@
 
 # Organising with Google Music
 1. Like songs that you're interested in
-1. Go the the 'Thumbs-up' playlist and use [this script](https://gist.githubusercontent.com/jmiserez/c9a9a0f41e867e5ebb75/raw/2195aa4ec75c12fb1539ec727faa555643107ec5/export_google_music.js) in developer console to get a list of the songs
+1. Go the the 'Thumbs-up' playlist and use `export_google_music.js` ([kudos to Jeremie Miserez](https://gist.githubusercontent.com/jmiserez/c9a9a0f41e867e5ebb75/raw/2195aa4ec75c12fb1539ec727faa555643107ec5/export_google_music.js)) in developer console to get a list of the songs
 1. Save the list of songs and regexp away everything except the songs' names (careful with Roy Eldridge's songs from archive.org!)
 1. Run `tagger.sh` to tag all the songs from the list as, let's say, Lindy songs
 1. Open Mixxx and the tag should appear! If not, select songs and click right > Metadata > Import from file tags
 
 # BPM
 1. Although Mixxx can calculate BPM, it very often fails on swing music. Use Adam Harries's [Ellington](https://github.com/AdamHarries/ellington) instead:
+
 ```bash
 # Scrape the music files
 ellington init library.json -d ~/Directory-to-scan/

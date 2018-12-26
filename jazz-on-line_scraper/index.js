@@ -2,7 +2,7 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 var fs = require('fs');
 
-var artist = "Chick_Webb"
+var artist = "Fats_Waller"
 
 function writeToFile(txt) {
   fs.appendFile(artist + ".txt", txt, function (err) {
