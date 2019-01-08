@@ -1,4 +1,6 @@
 *.mp3
+*.wma
+*.wav
 node_modules
 tmp
 library.json

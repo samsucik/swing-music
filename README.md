@@ -17,7 +17,7 @@
 1. Although Mixxx can calculate BPM, it very often fails on swing music. Use Adam Harries's [Ellington](https://github.com/AdamHarries/ellington) instead:
 
 ```bash
-# Scrape the music files
+# Crawl the music library (or a part of it)
 ellington init library.json -d ~/Directory-to-scan/
 
 # Calculate BPM
@@ -30,10 +30,10 @@ ellington bpm library.json
 
 # Using Mixxx
 ## Organising music
-Use the `grouping` tag (TIT1) to categorise music as Lindy, Blues, bad, etc. Also, BPM :-)
+Use the `grouping` tag (TIT1) to categorise music as Lindy, Blues, bad, etc. Also, BPM, bitrate, duration... :-)
 
 ## BPM Analysis
-Go to `Analyze` tab, select songs and start analysis (adds BPM info)
+Go to `Analyze` tab, select songs and start analysis (adds BPM info). Double-check because Mixxx generally does a poor job analysing BPM in swing music: Right click > `Properties` > `BPM` and check the BPM manually.
 
 ## DJ-ing
 1. Start Mixxx
@@ -41,6 +41,9 @@ Go to `Analyze` tab, select songs and start analysis (adds BPM info)
 1. Ensure equaliser is set all the way to the left
 1. Ensure fading time is set to 0 seconds (or less)
 1. Check that Auto DJ contains enough songs (if not, can import entire playlist to Auto DJ)
+1. Hit `Enable Auto DJ` and watch the magic happen
+1. Preview songs in the Preview deck (enable if hidden), check the beginning, end, middle, duration, tempo, etc
+1. To add songs to Auto DJ, right click and either `Add to Auto DJ Queue`, or `Load to Deck` (to play it as the next song)
 
 
 # Useful resources
