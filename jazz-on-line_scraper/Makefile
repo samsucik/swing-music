@@ -7,7 +7,7 @@ all: $(MP3FOLDERS)
 data/mp3/%: data/lists/%.txt data/mp3
 	mkdir -p $@
 	cd $@ && ../../../../downloader.sh ../../../$<
-
+	../sorter.sh $@
 
 data/lists/%.txt: data/lists
 	node index.js $(subst .txt,,$(subst data/lists/,,$@))
