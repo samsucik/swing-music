@@ -39,11 +39,18 @@ Go to `Analyze` tab, select songs and start analysis (adds BPM info). Double-che
 1. Start Mixxx
 1. Ensure HW is channelled properly (Options > Preferences). Generally, use laptop's jack for headphones and external sound card (usb) for speakers
 1. Ensure equaliser is set all the way to the left
-1. Ensure fading time is set to 0 seconds (or less)
+1. Ensure fading time is set to 0 seconds (or **to a negative value**)
 1. Check that Auto DJ contains enough songs (if not, can import entire playlist to Auto DJ)
 1. Hit `Enable Auto DJ` and watch the magic happen
 1. Preview songs in the Preview deck (enable if hidden), check the beginning, end, middle, duration, tempo, etc
 1. To add songs to Auto DJ, right click and either `Add to Auto DJ Queue`, or `Load to Deck` (to play it as the next song)
+
+# Lessons learnt as a DJ
+- Mix old and new tracks, beware of playing only historical (low-quality) tracks!
+- Know which songs are the floor-fillers *in the particular community*.
+- Play it safe (at least from the beginning), don't go for fast songs first.
+- Don't play fasts songs (or songs otherwise discouraging) if people don't know them, or risk having an empty dancefloor (there must be something positive about the song that will keep people dancing even at crazier tempos).
+- Use the equaliser, in particular to make the rhythm section more audible in older recordings, or to eliminate to unpleasant, low-quality high-pitched tones.
 
 
 # Useful resources
