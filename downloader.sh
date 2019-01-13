@@ -1,3 +1,4 @@
+#!/bin/bash
 FILE=$1
 
 URL=""
@@ -18,9 +19,9 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     elif [[ $line == "Description:"* ]]
     then
     	DESC=$(echo "$line" | sed -e 's/Description: //')
-    	
+
     	echo "Downloading '${TITLE} (${YEAR})' from '${URL}'"
-    	
+
     	FNAME="${TITLE}.mp3"
     	if [ ! -e "$FNAME" ]; then
 		    echo "  File not found (${FNAME})! Downloading..."
@@ -30,7 +31,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 			echo "  ${FNAME} exists. Not downloading it again..."
 			fileExists=1
 		fi
-		
+
 		if [[ "$fileExists" == 0 && $? -ne 0 ]]; then
 		    echo "  Failed."
 		    rm "$FNAME" || true

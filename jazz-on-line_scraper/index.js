@@ -2,7 +2,7 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 var fs = require('fs');
 
-var artist = "Fats_Waller"
+var artist = process.argv[2]
 
 function writeToFile(txt) {
   fs.appendFile(artist + ".txt", txt, function (err) {
@@ -18,7 +18,7 @@ const options = {
 
 rp(options)
   .then(($) => {
-    $('table tr td font a').each(function(i, elem) {
+    $('table tr td font a').each(function (i, elem) {
       var link = $(this).attr("href");
       if (link.indexOf(".mp3") !== -1) {
         var fullDescription = $(this).parent().text();
@@ -33,12 +33,12 @@ rp(options)
             year = year.slice(-4);
           }
           description = description.substring(yearMatch.index + yearMatch[0].length)
-                                   .trim();
+            .trim();
         }
-        var textToWrite = "URL: " + link + 
-                      "\nTitle: " + title +
-                      "\nYear: " + year +
-                      "\nDescription: " + description + "\n\n";
+        var textToWrite = "URL: " + link +
+          "\nTitle: " + title +
+          "\nYear: " + year +
+          "\nDescription: " + description + "\n\n";
         writeToFile(textToWrite);
       } else {
         // Skip
