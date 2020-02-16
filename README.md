@@ -45,6 +45,41 @@ Go to `Analyze` tab, select songs and start analysis (adds BPM info). Double-che
 1. Preview songs in the Preview deck (enable if hidden), check the beginning, end, middle, duration, tempo, etc
 1. To add songs to Auto DJ, right click and either `Add to Auto DJ Queue`, or `Load to Deck` (to play it as the next song)
 
+## Exporting ratings from Mixxx (and writing as metadata)
+Export ratings along with song title and artist (list A):
+```
+sqlite3
+.open mixxxdb.sqlite
+.header on
+.mode csv
+.once mixxx-library.csv
+select artist,title,rating from library order by artist;
+```
+
+Create a playlist containing all songs (ideally sorted by artist for better alignment with list A) and export it as CSV (list B).
+
+Generate map from file location to rating:
+```python
+import pandas as pd
+B = pd.read_csv("everything.csv", usecols=["Artist","Title","Location"])
+A = pd.read_csv("mixxx-library.csv")
+rating_map = {"0": 0, "1": 1, "2": 64, "3": 128, "4": 196, "5": 255}
+with open("ratings.csv", "w") as f:
+	for _, s in B.iterrows():
+		idx, idx_real = 1, False
+		for col in ["Artist", "Title"]: 
+			if not pd.isnull(s[col]): 
+				idx = idx & (A[col.lower()] == s[col])
+				idx_real = True
+		if not idx_real: 
+			print("{} cannot be matched with its rating because it has no title or artist set".format(s["Location"]))
+			continue
+		s1 = A.loc[idx]
+		if len(s1) < 1: print("Rating not found for: {} ({})".format(s["Title"], pd.isnull(s["Artist"])))
+		else: f.write("{}#{}\n".format(s["Location"], rating_map.get(str(s1.iloc[0]["rating"]), "0")))
+```
+
+
 # Lessons learnt as a DJ
 - Mix old and new tracks, beware of playing only historical (low-quality) tracks!
 - Know which songs are the floor-fillers *in the particular community*.
