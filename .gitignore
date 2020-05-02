@@ -1,4 +1,6 @@
 *.mp3
+*.flac
+*.zip
 *.wma
 *.wav
 node_modules

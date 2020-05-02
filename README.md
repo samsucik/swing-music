@@ -63,6 +63,7 @@ Generate map from file location to rating:
 import pandas as pd
 B = pd.read_csv("everything.csv", usecols=["Artist","Title","Location"])
 A = pd.read_csv("mixxx-library.csv")
+rating_map = {"0": 0, "1": 1, "2": 64, "3": 128, "4": 196, "5": 255}
 with open("ratings.csv", "w") as f:
 	for _, s in B.iterrows():
 		idx, idx_real = 1, False
@@ -75,7 +76,7 @@ with open("ratings.csv", "w") as f:
 			continue
 		s1 = A.loc[idx]
 		if len(s1) < 1: print("Rating not found for: {} ({})".format(s["Title"], pd.isnull(s["Artist"])))
-		else: f.write("{}#{}\n".format(s["Location"], s1.iloc[0]["rating"]))
+		else: f.write("{}#{}\n".format(s["Location"], rating_map.get(str(s1.iloc[0]["rating"]), "0")))
 ```
 
 
